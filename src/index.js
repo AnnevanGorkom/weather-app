@@ -1,4 +1,22 @@
+function removeClass() {
+  let weatherClasses = [
+    "fa-bolt",
+    "fa-cloud-rain",
+    "fa-cloud-showers-heavy",
+    "fa-snowflake",
+    "fa-smog",
+    "fa-sun",
+    "fa-cloud",
+  ];
+
+  return document
+    .querySelector("i.today-icon")
+    .classList.remove(...weatherClasses);
+}
+
 function showWeatherIcon(id) {
+  removeClass();
+
   if (id >= 200 && id < 300) {
     return `fa-bolt`;
   } else if (id >= 300 && id < 400) {
@@ -22,7 +40,7 @@ function calculateWindForce(speed) {
 }
 
 function degreesToCompass(degrees) {
-  var directions = [
+  let directions = [
     "North",
     "North-Northeast",
     "Northeast",
