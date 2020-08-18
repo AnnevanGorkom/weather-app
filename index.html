@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather app - week 4</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/9292fb24fd.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="card p-3 m-3">
+        <div class="card-body">
+          <form class="form-group row">
+            <div class="col-7">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="new-city-input"
+                placeholder="Find another city"
+              />
+            </div>
+            <div class="col-2">
+              <button
+                type="submit"
+                class="btn btn-primary btn-primary-sm"
+                id="#search"
+              >
+                Search
+              </button>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-primary btn-primary-sm" id="current-city">
+                Current city
+              </button>
+            </div>
+          </form>
+
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <h1 class="card-title"></h1>
+                  <p class="card-subtitle" id="date"></p>
+                </div>
+              </div>
+              <i class="fas fa-sun today-icon"></i>
+              <h2></h2>
+              <p class="degree-type">
+                <a href="#" id="celcius-link">ºC</a> |
+                <a href="#" id="fahrenheit-link">ºF</a>
+              </p>
+              <div class="row">
+                <div class="col weather-info weather-facts">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Max/min temp:</li>
+                    <li class="list-group-item">Wind direction:</li>
+                    <li class="list-group-item">Wind force:</li>
+                    <li class="list-group-item">Humidity</li>
+                  </ul>
+                </div>
+                <div class="col weather-info weather-vars">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <span id="max-min-temp"></span>ºC
+                    </li>
+                    <li class="list-group-item" id="wind-direction"></li>
+                    <li class="list-group-item">
+                      <span id="wind-force"></span> km/u
+                    </li>
+                    <li class="list-group-item">
+                      <span id="humidity"></span>%
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <h3>Forecast</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item days-temp">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="col-9">
+                      <p>FRI</p>
+                      <h4><strong>19</strong>/15</h4>
+                      <p class="degree-type">ºC</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item days-temp">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="col-9">
+                      <p>SAT</p>
+                      <h4><strong>21</strong>/16</h4>
+                      <p class="degree-type">ºC</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item days-temp">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-cloud-rain"></i>
+                    </div>
+                    <div class="col-9">
+                      <p>SUN</p>
+                      <h4><strong>19</strong>/16</h4>
+                      <p class="degree-type">ºC</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item days-temp">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="col-9">
+                      <p>MON</p>
+                      <h4><strong>19</strong>/16</h4>
+                      <p class="degree-type">ºC</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="list-group-item days-temp">
+                  <div class="row">
+                    <div class="col-3">
+                      <i class="fas fa-cloud-rain"></i>
+                    </div>
+                    <div class="col-9">
+                      <p>TUE</p>
+                      <h4><strong>21</strong>/14</h4>
+                      <p class="degree-type">ºC</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
