@@ -1,3 +1,21 @@
+function showWeatherIcon(id) {
+  if (id >= 200 && id < 300) {
+    return `fa-bolt`;
+  } else if (id >= 300 && id < 400) {
+    return `fa-cloud-rain`;
+  } else if (id >= 500 && id < 600) {
+    return `fa-cloud-showers-heavy`;
+  } else if (id >= 600 && id < 700) {
+    return `fa-snowflake`;
+  } else if (id >= 700 && id < 800) {
+    return `fa-smog`;
+  } else if (id === 800) {
+    return `fa-sun`;
+  } else if (id >= 801) {
+    return `fa-cloud`;
+  }
+}
+
 function calculateWindForce(speed) {
   let kph = Math.round((speed * 18) / 5);
   return kph;
@@ -44,6 +62,10 @@ function showWeather(response) {
   );
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+
+  document
+    .querySelector("i.today-icon")
+    .classList.add(showWeatherIcon(response.data.weather[0].id));
 }
 
 function showOtherLocation(city) {
