@@ -103,6 +103,10 @@ a:hover {
   background-color: #176592;
 }
 
+.coded-by {
+  text-align: center;
+}
+
 #date {
   font-size: 16px;
 }
