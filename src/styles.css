@@ -110,3 +110,7 @@ a:hover {
 #date {
   font-size: 16px;
 }
+
+#weather-description:first-letter {
+  text-transform: capitalize;
+}

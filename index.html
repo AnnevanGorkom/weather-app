@@ -55,7 +55,9 @@
               <div class="row">
                 <div class="col">
                   <h1 class="card-title"></h1>
-                  <p class="card-subtitle" id="date"></p>
+                  <p class="card-subtitle" id="date">
+                    <div id="weather-description"></div>
+                  </p>
                 </div>
               </div>
               <i class="today-icon fas"></i>
@@ -67,7 +69,6 @@
               <div class="row">
                 <div class="col weather-info weather-facts">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Max/min temp:</li>
                     <li class="list-group-item">Wind direction:</li>
                     <li class="list-group-item">Wind force:</li>
                     <li class="list-group-item">Humidity</li>
@@ -75,9 +76,6 @@
                 </div>
                 <div class="col weather-info weather-vars">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                      <span id="max-min-temp"></span>ºC
-                    </li>
                     <li class="list-group-item" id="wind-direction"></li>
                     <li class="list-group-item">
                       <span id="wind-force"></span> km/u

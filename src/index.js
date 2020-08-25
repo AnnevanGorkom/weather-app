@@ -62,14 +62,30 @@ function degreesToCompass(degrees) {
   return directions[value % 16];
 }
 
+// function showForecastWeather(response) {
+//   console.log(response.data);
+//   console.log(response.data.list);
+//   console.log(response.data.list[0]);
+//   console.log(response.data.list[0].weather[0].id);
+//   document
+//     .querySelectorAll("i")
+//     .classList.add(showWeatherIcon(response.data.list[0].weather[0].id));
+// }
+
+// function showForecast(city) {
+//   let apiKey = "94504fb22392e5a384860fde5e24eca5";
+//   let metricUnit = "metric";
+//   let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${metricUnit}&appid=${apiKey}`;
+//   axios.get(apiUrl).then(showForecastWeather);
+// }
+
 function showWeather(response) {
   document.querySelector(".card-title").innerHTML = response.data.name;
 
   document.querySelector("h2").innerHTML = Math.round(response.data.main.temp);
 
-  let maxTemp = Math.round(response.data.main.temp_max);
-  let minTemp = Math.round(response.data.main.temp_min);
-  document.querySelector("#max-min-temp").innerHTML = `${maxTemp}/${minTemp}`;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
 
   document.querySelector("#wind-direction").innerHTML = degreesToCompass(
     response.data.wind.deg
@@ -84,6 +100,8 @@ function showWeather(response) {
   document
     .querySelector("i.today-icon")
     .classList.add(showWeatherIcon(response.data.weather[0].id));
+
+  // showForecast(response.data.name);
 }
 
 function showOtherLocation(city) {
