@@ -57,6 +57,41 @@ a:hover {
   position: relative;
 }
 
+.search {
+  display: flex;
+}
+
+.input-group {
+  padding: 0;
+  border: none;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+}
+
+.search-input {
+  border: none;
+  font-size: 14px;
+}
+
+.search-icon {
+  font-size: 14px;
+}
+
+.btn {
+  background: #13547a;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  height: 35px;
+}
+
+.search-button {
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
 .today-icon {
   font-size: 72px;
   top: auto;
@@ -88,13 +123,6 @@ a:hover {
 
 .fas {
   color: #fff;
-}
-
-.btn {
-  background: #13547a;
-  border: none;
-  color: #fff;
-  font-size: 14px;
 }
 
 .btn:hover,
