@@ -101,6 +101,8 @@ function showWeather(response) {
     .querySelector("i.today-icon")
     .classList.add(showWeatherIcon(response.data.weather[0].id));
 
+  tempCelcius = response.data.main.temp;
+
   // showForecast(response.data.name);
 }
 
@@ -159,17 +161,24 @@ function createDate(date) {
   dateHeading.innerHTML = timeStamp;
 }
 
-// function switchToCelcius(event) {
-//   event.preventDefault();
-//   let temp = document.querySelector("h2");
-//   temp.innerHTML = `22`;
-// }
+function switchToFahrenheit(event) {
+  event.preventDefault();
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let tempF = (tempCelcius * 9) / 5 + 32;
+  let tempElement = document.querySelector("h2");
+  tempElement.innerHTML = Math.round(tempF);
+}
 
-// function switchToFahrenheit(event) {
-//   event.preventDefault();
-//   let temp = document.querySelector("h2");
-//   temp.innerHTML = `72`;
-// }
+function switchToCelcius(event) {
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
+  let tempElement = document.querySelector("h2");
+  tempElement.innerHTML = Math.round(tempCelcius);
+}
+
+let tempCelcius = null;
 
 createDate(new Date());
 showOtherLocation("Haarlem");
@@ -180,7 +189,8 @@ cityInput.addEventListener("submit", handleSubmit);
 let showCurrentCity = document.querySelector("#current-city");
 showCurrentCity.addEventListener("click", getCurrentPosition);
 
-// let tempCelcius = document.querySelector("#celcius-link");
-// let tempFahrenheit = document.querySelector("#fahrenheit-link");
-// tempCelcius.addEventListener("click", switchToCelcius);
-// tempFahrenheit.addEventListener("click", switchToFahrenheit);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", switchToFahrenheit);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", switchToCelcius);

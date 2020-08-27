@@ -37,10 +37,6 @@ i {
 }
 
 a {
-  color: #000;
-}
-
-a:hover {
   color: #13547a;
 }
 
@@ -95,6 +91,15 @@ a:hover {
 .today-icon {
   font-size: 72px;
   top: auto;
+}
+
+.degree-type .active {
+  color: #000;
+  cursor: default;
+}
+
+.degree-type .active:hover {
+  text-decoration: none;
 }
 
 .weather-info {
