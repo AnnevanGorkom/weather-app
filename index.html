@@ -33,6 +33,7 @@
                   placeholder="Find another city"
                   class="form-control search-input"
                   id="new-city-input"
+                  autofocus
                 />
                 <button type="submit" class="btn btn-primary search-button">
                   <i class="fas fa-search search-icon"></i>
@@ -56,12 +57,14 @@
                   <div id="weather-description"></div>
                 </div>
               </div>
-              <i class="today-icon fas"></i>
-              <h2></h2>
-              <p class="degree-type">
-                <a href="#" id="celcius-link" class="active">ºC</a> |
-                <a href="#" id="fahrenheit-link">ºF</a>
-              </p>
+              <div class="today-weather">
+                <i class="today-icon fas"></i>
+                <h2></h2>
+                <p class="degree-type">
+                  <a href="#" id="celcius-link" class="active">ºC</a> |
+                  <a href="#" id="fahrenheit-link">ºF</a>
+                </p>
+              </div>
               <div class="row">
                 <div class="col weather-info weather-facts">
                   <ul class="list-group list-group-flush">

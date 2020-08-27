@@ -88,6 +88,9 @@ a {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }
+.today-weather {
+  margin: 8px 0 8px 0;
+}
 
 .today-icon {
   font-size: 48px;
