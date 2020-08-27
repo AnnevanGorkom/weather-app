@@ -61,7 +61,6 @@ function degreesToCompass(degrees) {
 }
 
 function showWeather(response) {
-  console.log(response.data);
   document.querySelector("#date").innerHTML = createDate(
     response.data.dt * 1000
   );

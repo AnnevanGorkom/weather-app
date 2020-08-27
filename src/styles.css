@@ -90,8 +90,8 @@ a {
 }
 
 .today-icon {
-  font-size: 72px;
-  top: auto;
+  font-size: 48px;
+  bottom: 5px;
 }
 
 .degree-type .active {
