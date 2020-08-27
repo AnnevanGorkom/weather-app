@@ -62,24 +62,12 @@ function degreesToCompass(degrees) {
   return directions[value % 16];
 }
 
-// function showForecastWeather(response) {
-//   console.log(response.data);
-//   console.log(response.data.list);
-//   console.log(response.data.list[0]);
-//   console.log(response.data.list[0].weather[0].id);
-//   document
-//     .querySelectorAll("i")
-//     .classList.add(showWeatherIcon(response.data.list[0].weather[0].id));
-// }
-
-// function showForecast(city) {
-//   let apiKey = "94504fb22392e5a384860fde5e24eca5";
-//   let metricUnit = "metric";
-//   let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${metricUnit}&appid=${apiKey}`;
-//   axios.get(apiUrl).then(showForecastWeather);
-// }
-
 function showWeather(response) {
+  console.log(response.data);
+  document.querySelector("#date").innerHTML = createDate(
+    response.data.dt * 1000
+  );
+
   document.querySelector(".card-title").innerHTML = response.data.name;
 
   document.querySelector("h2").innerHTML = Math.round(response.data.main.temp);
@@ -102,8 +90,31 @@ function showWeather(response) {
     .classList.add(showWeatherIcon(response.data.weather[0].id));
 
   tempCelcius = response.data.main.temp;
+}
 
-  // showForecast(response.data.name);
+function showForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = null;
+  forecastElement.innerHTML = null;
+
+  for (let i = 0; i < 5; i++) {
+    forecast = response.data.list[i];
+    forecastElement.innerHTML += `
+    <li class="list-group-item days-temp">
+      <div class="row">
+        <div class="col-3">
+          <i class="fas ${showWeatherIcon(forecast.weather[0].id)}"></i>
+        </div>
+        <div class="col-9">
+          <p>${formatHours(forecast.dt * 1000)}</p>
+          <h4><strong>${Math.round(
+            forecast.main.temp_max
+          )}</strong>/${Math.round(forecast.main.temp_min)}</h4>
+          <p class="degree-type">ºC</p>
+        </div>
+      </div>
+    </li>`;
+  }
 }
 
 function showOtherLocation(city) {
@@ -111,6 +122,9 @@ function showOtherLocation(city) {
   let metricUnit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${metricUnit}&appid=${apiKey}`;
   axios.get(apiUrl).then(showWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${metricUnit}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function showCurrentPosition(position) {
@@ -140,7 +154,7 @@ function addZero(time) {
   return time;
 }
 
-function createDate(date) {
+function createDate(timestamp) {
   let days = [
     "Sunday",
     "Monday",
@@ -151,14 +165,17 @@ function createDate(date) {
     "Saturday",
   ];
 
+  let date = new Date(timestamp);
   let day = days[date.getDay()];
+
+  return (timeStamp = `${day}, ${formatHours(timestamp)}`);
+}
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
   let hour = addZero(date.getHours());
   let minute = addZero(date.getMinutes());
-
-  let timeStamp = `${day}, ${hour}:${minute}`;
-
-  let dateHeading = document.querySelector("#date");
-  dateHeading.innerHTML = timeStamp;
+  return `${hour}:${minute}`;
 }
 
 function switchToFahrenheit(event) {
@@ -180,7 +197,6 @@ function switchToCelcius(event) {
 
 let tempCelcius = null;
 
-createDate(new Date());
 showOtherLocation("Haarlem");
 
 let cityInput = document.querySelector("form");
