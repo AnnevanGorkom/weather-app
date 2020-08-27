@@ -15,8 +15,6 @@ function removeClass() {
 }
 
 function showWeatherIcon(id) {
-  removeClass();
-
   if (id >= 200 && id < 300) {
     return `fa-bolt`;
   } else if (id >= 300 && id < 400) {
@@ -84,6 +82,8 @@ function showWeather(response) {
   );
 
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+
+  removeClass();
 
   document
     .querySelector("i.today-icon")
